@@ -17,8 +17,6 @@
     --background-rgb: 11, 41, 41;
   }
 }
-
-
 body {
   font-family: 'Inter', sans-serif;
   color: rgb(var(--foreground-rgb));
