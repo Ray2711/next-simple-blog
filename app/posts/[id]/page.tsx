@@ -1,9 +1,12 @@
 import Link from "next/link";
+import pb from "../../lib/pocketbase.js"
 
 async function getNote(noteId:string){
-    const res = await fetch(`http://nurique.xyz:8090/api/collections/blogposts/records/${noteId}`,{next:{revalidate:30}}) //using pb as a backend
-
-    const data = await res.json();
+    //const res = await fetch(`http://nurique.xyz:8090/api/collections/blogposts/records/${noteId}`,{next:{revalidate:30}}) //using pb as a backend
+    const data = await pb.collection('blogposts').getOne(noteId, {
+        expand: 'relField1,relField2.subRelField',
+    });
+    //const data = await res.json();
     return data;
 }
 

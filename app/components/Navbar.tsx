@@ -1,5 +1,6 @@
-import Link from "next/link";
 
+import Link from "next/link";
+import pb from "../lib/pocketbase.js"
 export default async function Navbar(){
     return(
         <nav className="text-2xl flex justify-between py-6">

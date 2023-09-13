@@ -1,9 +1,12 @@
 import Link from "next/link";
-
+import pb from "../lib/pocketbase.js"
 async function getNotes() {
-    const res = await fetch('http://nurique.xyz:8090/api/collections/blogposts/records?page=1&perPage=30',{cache:'no-store'})
-    const data = await res.json();
-    return data?.items as any[];
+    const data = await pb.collection('blogposts').getFullList({ 
+        sort: '-created',
+    });
+
+    //const data = await res.json();
+    return data as any[];
 }
 export default async function NotesPage(){
     const notes = await getNotes();

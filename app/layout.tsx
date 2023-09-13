@@ -1,14 +1,13 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import Navbar from './components/Navbar'
-
-const inter = Inter({ subsets: ['latin'] })
+import pb from "./lib/pocketbase.js"
 
 export const metadata: Metadata = {
   title: "Nurique's Blog",
   description: 'Best BLOG EVAAAAAR!',
 }
+console.log(pb.authStore.isValid.toString())
 
 export default function RootLayout({
   children,
@@ -17,10 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <div className="w-5/6 md:w-4/5 m-auto xl:w-3/4 h-screen">
         <Navbar></Navbar>
-        
         {children}</div></body>
     </html>
   )
