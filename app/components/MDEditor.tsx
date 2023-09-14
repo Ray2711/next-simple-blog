@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation';
 
 
-export default () => {
+export default function MDedit() {
     const { register, handleSubmit } = useForm();
     const [text, setText] = useState('# Start your new blogpost here...');
     const router = useRouter();

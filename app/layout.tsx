@@ -17,6 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+      <link rel="icon" href="./favicon.ico" sizes="any" />
+      </head>
       <body>
         <div className="w-5/6 md:w-4/5 m-auto xl:w-3/4 h-screen">
         <DynamicComponent></DynamicComponent>
