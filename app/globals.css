@@ -16,6 +16,11 @@
     --foreground-rgb: 255, 255, 255;
     --background-rgb: 11, 41, 41;
   }
+  input[type=text]{
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+
+  }
 }
 body {
   font-family: 'Inter', sans-serif;
@@ -25,6 +30,10 @@ body {
 body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid rgb(0, 92, 184);
+}
+input[type=text]{
+  color: rgb(var(--foreground-rgb));
+  background-color: rgb(20 184 166);
 }
 
 

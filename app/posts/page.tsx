@@ -1,15 +1,12 @@
 import Link from "next/link";
-import pb from "../lib/pocketbase.js"
-async function getNotes() {
-    const data = await pb.collection('blogposts').getFullList({ 
-        sort: '-created',
-    });
-
-    //const data = await res.json();
-    return data as any[];
+const getNotes = async() => {
+    const res = await fetch(`http://nurique.xyz:8090/api/collections/blogs/records?sort=-created`,{next:{revalidate:10}}) //using pb as a backend
+    const data = await res.json();
+    return data.items as any[];
 }
 export default async function NotesPage(){
     const notes = await getNotes();
+
     return(
         <div className="x-full flex flex-row justify-between items-start h-screen">
         <div className="flex flex-col justify-center overflow-auto">

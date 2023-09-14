@@ -1,18 +1,15 @@
 import Link from "next/link";
-import pb from "../../lib/pocketbase.js"
+import ReactMarkdown from "react-markdown"
+import rehypeRaw from 'rehype-raw'
 
 async function getNote(noteId:string){
-    //const res = await fetch(`http://nurique.xyz:8090/api/collections/blogposts/records/${noteId}`,{next:{revalidate:30}}) //using pb as a backend
-    const data = await pb.collection('blogposts').getOne(noteId, {
-        expand: 'relField1,relField2.subRelField',
-    });
-    //const data = await res.json();
+    const res = await fetch(`http://nurique.xyz:8090/api/collections/blogs/records/${noteId}`,{next:{revalidate:30}}) //using pb as a backend
+    const data = await res.json();
     return data;
 }
 
 export default async function NotePage({params}:any) {
     const note = await getNote(params.id); //getting all of the info of blogpost by id
-
     return(
         <div>
             
@@ -20,7 +17,8 @@ export default async function NotePage({params}:any) {
             <div className="w-full h-24 rounded-full mx-auto">
                 <h1 className="text-6xl font-semibold">{note.title}</h1>
                 <br />
-                <div className="" dangerouslySetInnerHTML={{ __html: note.content }}></div> 
+
+                <ReactMarkdown rehypePlugins={[rehypeRaw]} children={note.content}  />
                 <br />
                 <h4 className="text-sky-800 dark:text-sky-400">{new Date(note.created).toDateString()}</h4>
             </div>
