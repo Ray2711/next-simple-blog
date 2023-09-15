@@ -18,7 +18,7 @@ export default function LoginForm() {
     };
 
     const login = async (data: any) => {
-        fetch("http://nurique.xyz:8090/api/collections/users/auth-with-password", {
+        fetch(`${process.env.NEXT_PUBLIC_PB_URL}/api/collections/users/auth-with-password`, {
             method: "POST",
             body: JSON.stringify({
                 identity: data.email,

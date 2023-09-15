@@ -2,12 +2,12 @@ import Link from "next/link";
 
 
 const getUser = async(username:string)=>{
-    const res = await fetch(`http://nurique.xyz:8090/api/collections/users/records?filter=(username='${username}')`,{next:{revalidate:30}}) //using pb as a backend
+    const res = await fetch(`${process.env.NEXT_PUBLIC_PB_URL}/api/collections/users/records?filter=(username='${username}')`,{next:{revalidate:30}}) //using pb as a backend
     const data = await res.json();
     return data?.items[0] || {};
 }
 const getUsersBlogs = async (userId:string) =>{
-    const res = await fetch(`http://nurique.xyz:8090/api/collections/blogs/records?filter=(name='${userId}')`,{next:{revalidate:30}}) //using pb as a backend
+    const res = await fetch(`${process.env.NEXT_PUBLIC_PB_URL}/api/collections/blogs/records?filter=(name='${userId}')&sort=-created`,{next:{revalidate:30}}) //using pb as a backend
     const data = await res.json();
     return data.items as any[];
 }

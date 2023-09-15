@@ -2,7 +2,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown"
 
 async function getNote(noteId:string){
-    const res = await fetch(`http://nurique.xyz:8090/api/collections/blogs/records/${noteId}`,{next:{revalidate:30}}) //using pb as a backend
+    const res = await fetch(`${process.env.NEXT_PUBLIC_PB_URL}/api/collections/blogs/records/${noteId}`,{next:{revalidate:30}}) //using pb as a backend
     const data = await res.json();
     return data;
 }

@@ -19,7 +19,7 @@ export default function MDedit() {
     };
 
     const post = async (data: any) => {
-        fetch("http://nurique.xyz:8090/api/collections/blogs/records/", {
+        fetch(`${process.env.NEXT_PUBLIC_PB_URL}/api/collections/blogs/records/`, {
             method: "POST",
             body: JSON.stringify({
                 title: data.title,

@@ -1,6 +1,6 @@
 import Link from "next/link";
 const getNotes = async() => {
-    const res = await fetch(`http://nurique.xyz:8090/api/collections/blogs/records?sort=-created`,{next:{revalidate:10}}) //using pb as a backend
+    const res = await fetch(`${process.env.NEXT_PUBLIC_PB_URL}/api/collections/blogs/records?sort=-created`,{next:{revalidate:10}}) //using pb as a backend
     const data = await res.json();
     return data.items as any[];
 }

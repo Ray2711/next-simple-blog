@@ -17,7 +17,7 @@ export default function LoginForm() {
     };
 
     const login = async (data: any) => {
-        fetch("http://nurique.xyz:8090/api/collections/users/records", {
+        fetch(`${process.env.NEXT_PUBLIC_PB_URL}/api/collections/users/records`, {
             method: "POST",
             body: JSON.stringify({
                 email: data.email,
@@ -31,7 +31,7 @@ export default function LoginForm() {
             }
         })
             .then((response) => response.json())
-            .then((json) => { if (json.id) { goToUserPage();} });
+            .then((json) => { if (json.id) { goToUserPage();} }).catch(console.error);
 
     }
 
