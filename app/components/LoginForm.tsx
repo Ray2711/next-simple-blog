@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form'
 import as from '../lib/auth.js'
+import Link from 'next/link.js';
 
 
 export default function LoginForm() {
@@ -36,15 +37,16 @@ export default function LoginForm() {
 
 
     return (
-        <div>
-            <div>{token}</div>
-            <form className='flex justify-center items-center flex-col text-black dark:text-white' onSubmit={handleSubmit(login)}>
-                <input type="text" id="login" placeholder='login/email' className='bg-teal-500 placeholder-teal-900' {...register('email')} />
-                <input type="password" id="password" placeholder='password' className='bg-teal-500 placeholder-teal-900' {...register('password')} />
-                <button type="submit" className='bg-teal-600 hover:bg-teal-950' disabled={isLoading}>
+        <div className='mt-10 flex flex-col items-center justify-center rounded-lg'>
+            <form className='flex justify-center items-start flex-col text-black dark:text-white text-right' onSubmit={handleSubmit(login)}>
+                <span>Login:</span>
+                <input type="text" id="login" placeholder='login/email' className='w-full bg-teal-500 placeholder-teal-900' {...register('email')} />
+                <span>Password:</span>
+                <input type="password" id="password" placeholder='password' className='w-full bg-teal-500 placeholder-teal-900' {...register('password')} />
+                <button type="submit" className='mt-2 w-full text-white bg-teal-600 hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-primary-800 bg-teal-600 hover:bg-teal-950' disabled={isLoading}>
                     {isLoading ? "Logging in..." : "Login"}
                 </button>
-
+                <span>Don’t have an account yet? <Link className='text-teal-200' href="/register">Sign Up</Link></span>
             </form>
         </div>
     )

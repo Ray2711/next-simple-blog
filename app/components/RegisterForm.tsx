@@ -38,14 +38,17 @@ export default function LoginForm() {
 
 
     return (
-        <div>
-            <div>{token}</div>
-            <form className='flex justify-center items-center flex-col text-black dark:text-white' onSubmit={handleSubmit(login)}>
-                <input type="text" id="login" placeholder='username' className='bg-teal-500 placeholder-teal-900' {...register('username')} />
-                <input type="text" id="login" placeholder='Display Name' className='bg-teal-500 placeholder-teal-900' {...register('name')} />
-                <input type="text" id="login" placeholder='email' className='bg-teal-500 placeholder-teal-900' {...register('email')} />
-                <input type="password" id="password" placeholder='password' className='bg-teal-500 placeholder-teal-900' {...register('password')} />
-                <button type="submit" className='bg-teal-600 hover:bg-teal-950' disabled={isLoading}>
+        <div className='mt-10 flex flex-col items-center justify-center rounded-lg'>
+            <form className='flex justify-center items-start flex-col text-black dark:text-white text-right' onSubmit={handleSubmit(login)}>
+                <span>Username:</span>
+                <input type="text" id="login" placeholder='username' className='w-full bg-teal-500 placeholder-teal-900' {...register('username')} />
+                <span>Display Name:</span>
+                <input type="text" id="name" placeholder='Display Name' className='w-full bg-teal-500 placeholder-teal-900' {...register('name')} />
+                <span>Email:</span>
+                <input type="text" id="email" placeholder='email' className='w-full bg-teal-500 placeholder-teal-900' {...register('email')} />
+                <span>Password:</span>
+                <input type="password" id="password" placeholder='password' className='w-full bg-teal-500 placeholder-teal-900' {...register('password')} />
+                <button type="submit" className='mt-2 w-full text-white bg-teal-600 hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-primary-800 bg-teal-600 hover:bg-teal-950' disabled={isLoading}>
                     {isLoading ? "Registering..." : "Register"}
                 </button>
 
